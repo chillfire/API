@@ -1,4 +1,4 @@
-# Medelinked API
+# Medelinked Health Cloud API
 Medelinked provide a HTTP API for partners to use to build applications that interact with a user’s
 health account. The API enables partners build custom white labelled solutions that allow them
 to:
