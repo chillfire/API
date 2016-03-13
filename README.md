@@ -79,3 +79,6 @@ The JSON structure to be included in the body of the request should include the 
         }
     }
 
+## Further Information
+To find out more about the Medelinked Health Cloud and support with using the API please visit http://www.medelinked.com/healthcloud/ or email us at developers@medelinked.com
+
