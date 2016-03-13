@@ -28,7 +28,7 @@ namespace Medelinked.Core.Client
 		private static string ProviderKey = "SampleProviderKey";
 
 		//The core service URL
-		private static string ServiceUrl = "https://medelinked-app.azurewebsites.net"; 
+		private static string ServiceUrl = "https://app.medelinked.com"; 
 
 		private static readonly Regex RxMsAjaxJsonInner = 
 			new Regex("^{\\s*\"d\"\\s*:(.*)}$", RegexOptions.Compiled);
