@@ -605,82 +605,81 @@ namespace Medelinked.Core.Client
         #region Symptom Checker
 
 		/// <summary>
-		/// Get the symptoms for the symptom checker
-		/// </summary>
-		public static async Task<List<HealthItem>> GetSymptomList()
-		{
-			try
-			{
-				HttpResponseMessage msg = await httpClient.GetAsync(ServiceUrl + @"/api/user/listsymptoms");
-
-				if (msg.IsSuccessStatusCode)
+				/// Get the symptoms for the symptom checker
+				/// </summary>
+				public static async Task<List<HealthItem>> GetSymptomList()
 				{
-					String str = await msg.Content.ReadAsStringAsync();
-					str = CleanWebScriptJson (str);
-					List<HealthItem> obj = JsonConvert.DeserializeObject<List<HealthItem>>(str);
-					return obj;
+					try
+					{
+						HttpResponseMessage msg = await httpClient.GetAsync(ServiceUrl + @"/api/user/listallsymptoms");
+
+						if (msg.IsSuccessStatusCode)
+						{
+							String str = await msg.Content.ReadAsStringAsync();
+							str = CleanWebScriptJson (str);
+							List<HealthItem> obj = JsonConvert.DeserializeObject<List<HealthItem>>(str);
+							return obj;
+						}
+					}
+					catch (Exception ex) {
+						Debug.Write (ex.ToString ());
+					}
+
+
+					return null;
 				}
-			}
-			catch (Exception ex) {
-				Debug.Write (ex.ToString ());
-			}
 
-
-			return null;
-		}
-
-		/// <summary>
-		/// Check symptoms
-		/// </summary>
-		/// <param name="Symptoms">Symptoms to check</param>
-		public static async Task<SymptomDiagnoses> CheckSymptoms(SymptomsToCheck Symptoms)
-		{
-			try
-			{
-				string postBody = "{\"SymptomDetails\":" + JsonConvert.SerializeObject(Symptoms) + "}";  
-				HttpResponseMessage msg = await httpClient.PostAsync(ServiceUrl + @"/api/user/diagnosesymptoms", new StringContent(postBody, Encoding.UTF8, "application/json"));
-
-				if (msg.IsSuccessStatusCode)
+				/// <summary>
+				/// Check symptoms
+				/// </summary>
+				/// <param name="Symptoms">Symptoms to check</param>
+				public static async Task<SymptomDiagnoses> CheckSymptoms(SymptomsToCheck Symptoms)
 				{
-					String str = await msg.Content.ReadAsStringAsync();
-					str = CleanWebScriptJson (str);
-					SymptomDiagnoses obj = JsonConvert.DeserializeObject<SymptomDiagnoses>(str);
-					return obj;
+					try
+					{
+						string postBody = "{\"SymptomDetails\":" + JsonConvert.SerializeObject(Symptoms) + "}";  
+						HttpResponseMessage msg = await httpClient.PostAsync(ServiceUrl + @"/api/user/diagnosesymptoms", new StringContent(postBody, Encoding.UTF8, "application/json"));
+
+						if (msg.IsSuccessStatusCode)
+						{
+							String str = await msg.Content.ReadAsStringAsync();
+							str = CleanWebScriptJson (str);
+							SymptomDiagnoses obj = JsonConvert.DeserializeObject<SymptomDiagnoses>(str);
+							return obj;
+						}
+					}
+					catch (Exception ex) {
+						Debug.Write (ex.ToString ());
+					}
+
+					return null;
 				}
-			}
-			catch (Exception ex) {
-				Debug.Write (ex.ToString ());
-			}
 
-			return null;
-		}
-
-		/// <summary>
-		/// Get details of the diagnosis
-		/// </summary>
-		/// <param name="DiagnosisID">Image to parse</param>
-		public static async Task<DiagnosisDetail> GetDiagnosisDetails(string DiagnosisID)
-		{
-			try
-			{
-				string postBody = "{\"DiagnosisID\":\"" + DiagnosisID + "\"}"; 
-
-				HttpResponseMessage msg = await httpClient.PostAsync(ServiceUrl + @"/api/user/diagnosisinformation", new StringContent(postBody, Encoding.UTF8, "application/json"));
-
-				if (msg.IsSuccessStatusCode)
+				/// <summary>
+				/// Get details of the diagnosis
+				/// </summary>
+				/// <param name="DiagnosisID">Image to parse</param>
+				public static async Task<DiagnosisDetail> GetDiagnosisDetails(string DiagnosisID)
 				{
-					String str = await msg.Content.ReadAsStringAsync();
-					str = CleanWebScriptJson (str);
-					DiagnosisDetail obj = JsonConvert.DeserializeObject<DiagnosisDetail>(str);
-					return obj;
-				}
-			}
-			catch (Exception ex) {
-				Debug.Write (ex.ToString ());
-			}
+					try
+					{
+						HttpResponseMessage msg = await httpClient.GetAsync(ServiceUrl + @"/api/user/diagnosisinformation?DiagnosisID=" + DiagnosisID);
 
-			return null;
-		}
+						if (msg.IsSuccessStatusCode)
+						{
+							String str = await msg.Content.ReadAsStringAsync();
+							str = CleanWebScriptJson (str);
+							DiagnosisDetail obj = JsonConvert.DeserializeObject<DiagnosisDetail>(str);
+							return obj;
+						}
+					}
+					catch (Exception ex) {
+						Debug.Write (ex.ToString ());
+					}
+
+					return null;
+				}
+
 
 		#endregion
         
