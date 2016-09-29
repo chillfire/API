@@ -119,6 +119,20 @@ class SDKSample
 			newRecord.Description.What = "Pollen Allergy";
 			newRecord.Description.Reaction = "Rash";
 			newRecord.Description.FirstObserved = "15/11/1995";
+			newRecord.ExternalID = "16573532" //ID from external EHR or record system
+			
+			newRecord.Codes.Add(new MedicalCode() {
+				Scheme = "SNOMED-CT",
+				Code = "300910009",
+				Origin = "Allergy to pollen (disorder)"
+			});
+			
+			newRecord.Codes.Add(new MedicalCode() {
+							Scheme = "CTV3",
+							Code = "Xa7lL",
+							Origin = "Allergy to pollen (disorder)"
+						});
+
 		}
 		else if (category == "Condition")
 		{
