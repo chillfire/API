@@ -126,12 +126,7 @@ class SDKSample
 				Code = "300910009",
 				Origin = "Allergy to pollen (disorder)"
 			});
-			
-			newRecord.Codes.Add(new MedicalCode() {
-							Scheme = "CTV3",
-							Code = "Xa7lL",
-							Origin = "Allergy to pollen (disorder)"
-						});
+		 
 
 		}
 		else if (category == "Condition")
@@ -170,11 +165,11 @@ class SDKSample
 			newRecord.Type = "Record";
 			newRecord.Title = "Appendectomy";
 			newRecord.Description.Purpose = "Removal of Appendix";
-            newRecord.Description.What = "Appendectomy";
+            		newRecord.Description.What = "Appendectomy";
 			newRecord.Description.Doctor = "Dr Green";
 			newRecord.Description.Who = "Warwick Hospital";
 			newRecord.Description.Complications = "none";
-            newRecord.Description.Outcome = "Successfully removed vermiform appendix.";
+            		newRecord.Description.Outcome = "Successfully removed vermiform appendix.";
 		}
 		else if (category == "Problem" || category == "Notes" || category == "Consultation")
 		{
