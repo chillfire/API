@@ -23,15 +23,15 @@ namespace Medelinked.Core.Response
 		public RecordDescription Description { get; set; }
 		public bool ReturnAllRecords { get; set; }
 		public string ScanOrXRayLink { get; set; }
-		public List<MedicalCode> Codes { get; set }
-		public string ExternalID { get; set }
+		public List<MedicalCode> Codes { get; set; }
+		public string ExternalID { get; set; }
 	}
 	
 	public class MedicalCode
 	{
-		public string Code { get; set }
-		public string Origin { get; set }
-		public string Scheme { get; set }
+		public string Code { get; set; }
+		public string Origin { get; set; }
+		public string Scheme { get; set; }
 	}
 }
 
